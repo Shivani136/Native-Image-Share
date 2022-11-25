@@ -1,21 +1,41 @@
 {
   "name": "image-share-native",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~47.0.8",
+    "@firebase/app": "^0.8.3",
+    "@firebase/app-compat": "^0.1.39",
+    "@firebase/auth": "^0.20.7",
+    "@firebase/firestore": "^3.5.0",
+    "@firebase/storage": "^0.9.12",
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-community/masked-view": "^0.1.10",
+    "expo": "^47.0.8",
+    "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
+    "firebase": "^8.10.1",
+    "moment": "^2.29.1",
     "react": "18.1.0",
-    "react-native": "0.70.5"
+    "react-native": "0.70.5",
+    "react-native-elements": "^3.1.0",
+    "react-native-gesture-handler": "^1.9.0",
+    "react-native-image-base64": "^0.1.4",
+    "react-native-image-picker": "^3.1.4",
+    "react-native-loading-spinner-overlay": "^2.0.0",
+    "react-native-reanimated": "^1.13.2",
+    "react-native-safe-area-context": "^3.1.9",
+    "react-native-screens": "^2.16.1",
+    "react-native-vector-icons": "^7.1.0",
+    "react-navigation": "^3.11.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "eslint-plugin-react-hooks": "^4.6.0"
   },
   "private": true
 }
