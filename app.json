@@ -1,8 +1,13 @@
 {
+  "name": "Image-Share-Native",
+  "displayName": "Image Share Example",
   "expo": {
     "name": "Image-Share-Native",
+    "owner": "shivani136",
     "slug": "Image-Share-Native",
-    "version": "1.0.0",
+    "description": "Image share is the app for share the image to user",
+    "privacy": "public",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -12,7 +17,8 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/97564ebd-61ac-407e-93b3-b1d6dedb39b6"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -22,14 +28,21 @@
       "bundleIdentifier": "io.expo.client"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.image_share"
+     "package": "com.image_share",
+     "versionCode": 1,
+     "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#FFFFFF"
+       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "runtimeVersion": "1.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "97564ebd-61ac-407e-93b3-b1d6dedb39b6"
+      }
     }
   }
 }

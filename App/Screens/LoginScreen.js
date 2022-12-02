@@ -5,7 +5,9 @@ import ButtonComponent from '../Components/ButtonComponent';
 import { LoginUser } from '../Firebase/LoginUser';
 import Firebase from '../Firebase/firebaseConfig';
 import Spinner from 'react-native-loading-spinner-overlay';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+//import AsyncStorage from '@react-native-async-storage/async-storage';
+//import { initializeAuth, getReactNativePersistence} from 'firebase/auth/react-native';
+
 class Login extends Component {
     state = {
         email: "",
@@ -15,7 +17,7 @@ class Login extends Component {
 
     async componentDidMount() {
         this.setState({ loader: true })
-        const uid = await AsyncStorage.getItem('UID');
+       // const uid = await AsyncStorage.getItem('UID');
         if (uid) {
             this.props.navigation.navigate('Dashboard');
             this.setState({ loader: false })
@@ -38,7 +40,7 @@ class Login extends Component {
         LoginUser(this.state.email, this.state.password).
             then(async (res) => {
                 const uid = Firebase.auth().currentUser.uid;
-                await AsyncStorage.setItem('UID', uid);
+               // await AsyncStorage.setItem('UID', uid);
                 this.setState({ loader: false })
                 this.props.navigation.navigate('Dashboard');
             }).
@@ -57,9 +59,9 @@ class Login extends Component {
                 <TouchableOpacity onPress={() => { this.props.navigation.navigate('SignUp') }}>
                     <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>New User? Click Here</Text>
                 </TouchableOpacity>
-                <Spinner
+                {/* <Spinner
                     visible={this.state.loader}
-                />
+                /> */}
             </View>
         )
     }

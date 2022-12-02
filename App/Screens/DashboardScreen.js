@@ -9,122 +9,122 @@ import { UpdateUserImage } from '../Firebase/Users';
 import ImgToBase64 from 'react-native-image-base64';
 
 class Dashboard extends Component {
-    // state = {
-    //     allUsers: [],
-    //     loader: false,
-    //     imageUrl: '',
-    //     loggedInUserName: ''
-    // }
+    state = {
+        allUsers: [],
+         loader: false,
+         imageUrl: '',
+        //  loggedInUserName: ''
+    }
 
-    // async componentDidMount() {
-    //     try {
-    //         this.setState({ loader: true })
-    //         await firebase.database().ref('users')
-    //             .on("value", async (datasnapshot) => {
-    //                 const uuid = await AsyncStorage.getItem('UID');
-    //                 new Promise((resolve, reject) => {
-    //                     let users = [];
-    //                     let lastMessage = '';
-    //                     let lastDate = '';
-    //                     let lastTime = '';
-    //                     let properDate = '';
-    //                     datasnapshot.forEach((child) => {
-    //                         if (child.val().uuid === uuid) {
-    //                             console.log('ff', child.val().image);
-    //                             this.setState({ loggedInUserName: child.val().name, imageUrl: child.val().image })
-    //                         }
-    //                         else {
-    //                             let newUser = {
-    //                                 userId: '',
-    //                                 userName: '',
-    //                                 userProPic: '',
-    //                                 lastMessage: '',
-    //                                 lastDate: '',
-    //                                 lastTime: '',
-    //                                 properDate: ''
-    //                             }
-    //                             new Promise((resolve, reject) => {
-    //                                 firebase.database().ref('messages').
-    //                                     child(uuid).child(child.val().uuid).orderByKey().limitToLast(1).on('value', (dataSnapshots) => {
-    //                                         if (dataSnapshots.val()) {
-    //                                             dataSnapshots.forEach((child) => {
-    //                                                 lastMessage = child.val().messege.image !== '' ? 'Photo' : child.val().messege.msg;
-    //                                                 lastDate = child.val().messege.date;
-    //                                                 lastTime = child.val().messege.time;
-    //                                                 properDate = child.val().messege.date + " " + child.val().messege.time
-    //                                             });
-    //                                         }
-    //                                         else {
-    //                                             lastMessage = '';
-    //                                             lastDate = '';
-    //                                             lastTime = '';
-    //                                             properDate = '';
-    //                                         }
-    //                                         newUser.userId = child.val().uuid;
-    //                                         newUser.userName = child.val().name;
-    //                                         newUser.userProPic = child.val().image;
-    //                                         newUser.lastMessage = lastMessage;
-    //                                         newUser.lastTime = lastTime;
-    //                                         newUser.lastDate = lastDate;
-    //                                         newUser.properDate = properDate;
-    //                                         return resolve(newUser);
-    //                                     });
-    //                             }).then((newUser) => {
-    //                                 users.push({
-    //                                     userName: newUser.userName,
-    //                                     uuid: newUser.userId,
-    //                                     imageUrl: newUser.userProPic,
-    //                                     lastMessage: newUser.lastMessage,
-    //                                     lastTime: newUser.lastTime,
-    //                                     lastDate: newUser.lastDate,
-    //                                     properDate: newUser.lastDate ? new Date(newUser.properDate) : null
-    //                                 });
-    //                                 this.setState({ allUsers: users.sort((a, b) => b.properDate - a.properDate) });
-    //                             });
-    //                             return resolve(users);
-    //                         }
-    //                     });
-    //                 }).then((users) => {
-    //                     this.setState({ allUsers: users.sort((a, b) => b.properDate - a.properDate) });
-    //                 })
-    //                 this.setState({ loader: false })
-    //             })
-    //     } catch (error) {
-    //         alert(error);
-    //         this.setState({ loader: false })
-    //     }
-    // }
+    async componentDidMount() {
+        try {
+            this.setState({ loader: true })
+            await firebase.database().ref('users')
+                .on("value", async (datasnapshot) => {
+                    const uuid = await AsyncStorage.getItem('UID');
+                    new Promise((resolve, reject) => {
+                        let users = [];
+                        let lastMessage = '';
+                        let lastDate = '';
+                        let lastTime = '';
+                        let properDate = '';
+                        datasnapshot.forEach((child) => {
+                            if (child.val().uuid === uuid) {
+                                console.log('ff', child.val().image);
+                                this.setState({ loggedInUserName: child.val().name, imageUrl: child.val().image })
+                            }
+                            else {
+                                let newUser = {
+                                    userId: '',
+                                    userName: '',
+                                    userProPic: '',
+                                    lastMessage: '',
+                                    lastDate: '',
+                                    lastTime: '',
+                                    properDate: ''
+                                }
+                                new Promise((resolve, reject) => {
+                                    firebase.database().ref('messages').
+                                        child(uuid).child(child.val().uuid).orderByKey().limitToLast(1).on('value', (dataSnapshots) => {
+                                            if (dataSnapshots.val()) {
+                                                dataSnapshots.forEach((child) => {
+                                                    lastMessage = child.val().messege.image !== '' ? 'Photo' : child.val().messege.msg;
+                                                    lastDate = child.val().messege.date;
+                                                    lastTime = child.val().messege.time;
+                                                    properDate = child.val().messege.date + " " + child.val().messege.time
+                                                });
+                                            }
+                                            else {
+                                                lastMessage = '';
+                                                lastDate = '';
+                                                lastTime = '';
+                                                properDate = '';
+                                            }
+                                            newUser.userId = child.val().uuid;
+                                            newUser.userName = child.val().name;
+                                            newUser.userProPic = child.val().image;
+                                            newUser.lastMessage = lastMessage;
+                                            newUser.lastTime = lastTime;
+                                            newUser.lastDate = lastDate;
+                                            newUser.properDate = properDate;
+                                            return resolve(newUser);
+                                        });
+                                }).then((newUser) => {
+                                    users.push({
+                                        userName: newUser.userName,
+                                        uuid: newUser.userId,
+                                        imageUrl: newUser.userProPic,
+                                        lastMessage: newUser.lastMessage,
+                                        lastTime: newUser.lastTime,
+                                        lastDate: newUser.lastDate,
+                                        properDate: newUser.lastDate ? new Date(newUser.properDate) : null
+                                    });
+                                    this.setState({ allUsers: users.sort((a, b) => b.properDate - a.properDate) });
+                                });
+                                return resolve(users);
+                            }
+                        });
+                    }).then((users) => {
+                        this.setState({ allUsers: users.sort((a, b) => b.properDate - a.properDate) });
+                    })
+                    this.setState({ loader: false })
+                })
+        } catch (error) {
+            alert(error);
+            this.setState({ loader: false })
+        }
+    }
 
-    // logOut = async () => {
-    //     await firebase.auth().signOut().then(async () => {
-    //         await AsyncStorage.removeItem('UID');
-    //         this.props.navigation.navigate('Login');
-    //     }).catch((err) => {
-    //         alert(err);
-    //     })
-    // }
+    logOut = async () => {
+        await firebase.auth().signOut().then(async () => {
+            await AsyncStorage.removeItem('UID');
+            this.props.navigation.navigate('Login');
+        }).catch((err) => {
+            alert(err);
+        })
+    }
 
-    // openGallery() {
-    //     launchImageLibrary('photo', (response) => {
-    //         this.setState({ loader: true });
-    //         ImgToBase64.getBase64String(response.uri)
-    //             .then(async (base64String) => {
-    //                 const uid = await AsyncStorage.getItem('UID');
-    //                 let source = "data:image/jpeg;base64," + base64String;
-    //                 UpdateUserImage(source, uid).
-    //                     then(() => {
-    //                         this.setState({ imageUrl: response.uri, loader: false });
-    //                     })
-    //             })
-    //             .catch(err => this.setState({ loader: false }));
-    //     })
-    // }
+    openGallery() {
+        launchImageLibrary('photo', (response) => {
+            this.setState({ loader: true });
+            ImgToBase64.getBase64String(response.uri)
+                .then(async (base64String) => {
+                    const uid = await AsyncStorage.getItem('UID');
+                    let source = "data:image/jpeg;base64," + base64String;
+                    UpdateUserImage(source, uid).
+                        then(() => {
+                            this.setState({ imageUrl: response.uri, loader: false });
+                        })
+                })
+                .catch(err => this.setState({ loader: false }));
+        })
+    }
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: '#000' }}>
-                <Text>headerMode</Text>
-                {/* <AppHeader title="Messages" navigation={this.props.navigation} onPress={() => this.logOut()} /> */}
-                {/* <FlatList
+            <View style={{ flex: 1, backgroundColor: '#fff' }}>
+                {/* <Text>headerMode</Text> */}
+                <AppHeader title="Messages" navigation={this.props.navigation} onPress={() => this.logOut()} />
+                <FlatList
                     alwaysBounceVertical={false}
                     data={this.state.allUsers}
                     style={{ padding: 5 }}
@@ -154,10 +154,10 @@ class Dashboard extends Component {
                             <View style={{ borderWidth: 0.5, borderColor: '#fff' }} />
                         </View>
                     )}
-                /> */}
-                {/* <Spinner
+                />
+                <Spinner
                     visible={this.state.loader}
-                /> */}
+                />
             </View>
         )
     }

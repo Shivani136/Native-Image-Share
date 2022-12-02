@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Imag, TouchableOpacity, Image,Text } from 'react-native';
 import TextInputComponent from '../Components/TextInputComponent';
 import ButtonComponent from '../Components/ButtonComponent';
 import { SignUpUser } from '../Firebase/SignUp';
@@ -54,11 +54,14 @@ class SignUp extends Component {
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#000', justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={require('../Assets/codehunger.png')} style={{ width: 100, height: 100, borderRadius: 50, marginBottom: 30 }} />
+                {/* <Image source={require('../Assets/codehunger.png')} style={{ width: 100, height: 100, borderRadius: 50, marginBottom: 30 }} /> */}
                 <TextInputComponent placeholder="Enter Name" updateFields={(text) => this.setState({ name: text })} />
                 <TextInputComponent placeholder="Enter Email" updateFields={(text) => this.setState({ email: text })} />
                 <TextInputComponent placeholder="Enter Password" updateFields={(text) => this.setState({ password: text })} />
                 <ButtonComponent title="Sign Up" onPress={() => { this.SignUPtoFIrebase() }} />
+                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Login') }}>
+                    <Text style={{ color: '#fff', fontSize: 16, fontWeight: 'bold' }}>You alredy have an account, please Login</Text>
+                </TouchableOpacity>
                 <Spinner
                     visible={this.state.loader}
                 />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Image, TextInput, FlatList, Dimensions, } from 'react-native';
 import AppHeader from '../Components/AppHeader';
 import Spinner from 'react-native-loading-spinner-overlay';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import { SendMessage, RecieveMessage } from '../Firebase/Message';
 import firebase from '../Firebase/firebaseConfig';

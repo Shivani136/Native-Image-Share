@@ -7,7 +7,7 @@ class AppHeader extends Component {
     render() {
         const { title, onPress, navigation } = this.props;
         return (
-            <View style={{ height: 60 }}>
+            <View style={{ height: 110 }}>
                 <View style={[styles.gradient, { paddingTop: 5, backgroundColor: '#ffd31d' }]}>
                     <View style={styles.headerView}>
                         {title === "Messages" ?

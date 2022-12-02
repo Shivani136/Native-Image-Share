@@ -8,9 +8,9 @@
     <true/>
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
-    <key>EXUpdatesSDKVersion</key>
-    <string>47.0.0</string>
+    <key>EXUpdatesRuntimeVersion</key>
+    <string>1.0.0</string>
     <key>EXUpdatesURL</key>
-    <string>https://exp.host/@anonymous/Image-Share-Native</string>
+    <string>https://u.expo.dev/97564ebd-61ac-407e-93b3-b1d6dedb39b6</string>
   </dict>
 </plist>

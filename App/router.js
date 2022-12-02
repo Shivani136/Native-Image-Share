@@ -1,4 +1,7 @@
-import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
+// import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
+
 import SignUp from '../App/Screens/SignUpScreen';
 import Login from '../App/Screens/LoginScreen';
 import Dashboard from '../App/Screens/DashboardScreen';
